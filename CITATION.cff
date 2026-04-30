@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use no-meta-standing-ledger, cite both the software and the underlying theory."
+title: "no-meta-standing-ledger"
+version: "0.1.0"
+license: "Apache-2.0"
+authors:
+  - family-names: "Takahashi"
+    given-names: "K."
+references:
+  - type: generic
+    title: "Standing-Layer Honest Public Standing Dynamics for Research Claims under Observable-Only, No-Meta Governance"
+    authors:
+      - family-names: "Takahashi"
+        given-names: "K."
+    year: 2026
+    doi: "10.5281/zenodo.19447443"

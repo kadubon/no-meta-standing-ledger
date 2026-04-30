@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0",
+  "title": "no-meta-standing-ledger public event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "schema_version",
+    "epoch",
+    "class",
+    "issuer",
+    "target",
+    "claim_id",
+    "lineage_id",
+    "obligation_id",
+    "idempotency_key",
+    "logindex",
+    "hash",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "nmsl.event.v1"
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "class": {
+      "type": "string",
+      "enum": [
+        "claim.create",
+        "evidence.add",
+        "challenge.open",
+        "challenge.complete",
+        "challenge.discharge",
+        "edge.add",
+        "lineage.supersede",
+        "claim.retire",
+        "memory.forget",
+        "memory.rehydrate",
+        "taxonomy.update"
+      ]
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lineage_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "obligation_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "logindex": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

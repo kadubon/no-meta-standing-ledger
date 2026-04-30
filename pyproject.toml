@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "no-meta-standing-ledger"
+version = "0.1.0"
+description = "Observable-only, no-meta public standing ledger for replayable research claims."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{ name = "no-meta-standing-ledger contributors" }]
+keywords = [
+  "research-claims",
+  "auditability",
+  "replay",
+  "standing",
+  "observable-only",
+  "no-meta-governance",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Security",
+]
+dependencies = []
+
+[project.scripts]
+nmsl = "no_meta_standing_ledger.cli:main"
+
+[dependency-groups]
+dev = [
+  "bandit[toml]>=1.7.10",
+  "mypy>=1.13.0",
+  "pip-audit>=2.7.3",
+  "pytest>=8.3.3",
+  "ruff>=0.7.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/no_meta_standing_ledger"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "S", "UP", "B", "C4", "SIM", "RUF"]
+ignore = [
+  "S101",
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+warn_return_any = true
+disallow_untyped_defs = true
+files = ["src", "tests", "scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "dist", "build"]
